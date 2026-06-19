@@ -1,6 +1,5 @@
 Deploying the Swiggy Clone App with Terraform, Kubernetes and GitHub Actions.
 
-
 [A] Let's use Terraform to create an EC2 instance for EC2 Runner, Docker and SonarQube
 Content Of main.tf
     ```bash
