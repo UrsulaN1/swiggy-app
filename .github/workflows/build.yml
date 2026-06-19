@@ -43,9 +43,28 @@ jobs:
         uses: unfor19/install-aws-cli-action@v1
         with:
           version: 2  
-      - name: create eks cluster
+      
+      - name: Install eksctl
         run: |
-          aws eks create-cluster --name swiggy --kubernetes-version 1.32
+          ARCH=amd64
+          PLATFORM=$(uname -s)_$ARCH
+          curl -sLO "https://github.com"
+          tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
+          sudo mv /tmp/eksctl /usr/local/bin
+          eksctl version
+
+      - name: Create EKS Cluster
+        run: |
+            eksctl create cluster \
+             --name swiggy \
+            --region us-east-1 \
+            --nodegroup-name standard-workers \
+            --node-type t2.medium \
+            --nodes 1 \
+            --nodes-min 1 \
+            --nodes-max 1 \
+            --managed
+              
 
       - name: Get EKS Credentials
         run: |
