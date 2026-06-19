@@ -30,7 +30,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: wasimhannure/swiggy-app:latest
+          tags: ursulan1/swiggy:latest
 
       - name: AWS Login
         uses: aws-actions/configure-aws-credentials@v6.1.0
